@@ -10,3 +10,7 @@ export const changeHomeDirectory = () => {
   const homeDirectory = homedir();
   process.chdir(homeDirectory);
 }
+
+export const printGreeting = (userName) => {
+  console.log(colorText(`Welcome to the File Manager, ${userName + "!" + EOL}`, "green"))
+}

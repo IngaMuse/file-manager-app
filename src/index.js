@@ -1,28 +1,40 @@
-import { EOL} from "node:os";
+import { EOL } from "node:os";
 import { stdin as input, stdout as output, exit } from "node:process";
 import { createInterface } from "node:readline/promises";
 import getUserName from "./utils/getUserName.js";
-import { changeHomeDirectory, printCurrentWorkingDirectory } from "./utils/pathUtils.js";
+import {
+  changeHomeDirectory,
+  printCurrentWorkingDirectory,
+  printGreeting,
+} from "./utils/pathUtils.js";
 import { colorText } from "./utils/colorText.js";
+import { handlerUserInput } from "./handlerUserInput.js";
 
-const runApp = async () => {
+const runApp = () => {
   const userName = getUserName();
   changeHomeDirectory();
   const readlineInterface = createInterface({ input, output });
+  printGreeting(userName);
+  printCurrentWorkingDirectory();
 
-  readlineInterface.write(
-    colorText(`Welcome to the File Manager, ${userName + "!" + EOL}`, "green")
-  );
-  readlineInterface.write(
-    printCurrentWorkingDirectory()
-  );
+  const closeReadLine = () => {
+    readlineInterface.close();
+  };
 
   readlineInterface.on("close", () => {
-    readlineInterface.write(
-      colorText( `${EOL}Thank you for using File Manager, ${userName}, goodbye!${EOL}`, "green")
+    console.log(
+      colorText(
+        `${EOL}Thank you for using File Manager, ${userName}, goodbye!${EOL}`,
+        "green"
+      )
     );
     exit();
   });
-}
 
-await runApp();
+  readlineInterface.on("line", async (userInput) => {
+    await handlerUserInput(userInput, closeReadLine);
+    printCurrentWorkingDirectory();
+  });
+};
+
+runApp();

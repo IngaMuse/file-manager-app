@@ -8,3 +8,7 @@ export const colorText = (text, color) => {
       return text;
   }
 }
+
+export const printErrorText = (text) => {
+  console.log(colorText(text, 'red'))
+}
