@@ -1,6 +1,7 @@
 import { printErrorText } from "./utils/colorText.js";
 import { EOL } from "node:os";
 import { goUpDirectory } from "./nav/up.js";
+import { getChangeDirectory } from "./nav/cd.js";
 
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
@@ -19,6 +20,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 1) {
         printErrorText("Invalid input change dir command" + EOL)
       } else {
+        getChangeDirectory(args);
       }
       break;
 
