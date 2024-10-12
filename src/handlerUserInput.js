@@ -7,6 +7,7 @@ import { readFile } from "./fs/cat.js";
 import { createFile } from "./fs/add.js";
 import { renameFile } from "./fs/rn.js";
 import { copyFile } from "./fs/cp.js";
+import { removeFile } from "./fs/rm.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
   const [operationType, ...args] = userInput.trim().split(/\s+/g)
@@ -77,8 +78,9 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "rm":
       if (args.length !== 1) {
-        printErrorText("Invalid input rename command" + EOL)
+        printErrorText("Invalid input remove command" + EOL)
       } else {
+        await removeFile(args);
       }
       break;
 
