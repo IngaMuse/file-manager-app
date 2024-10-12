@@ -9,6 +9,7 @@ import { renameFile } from "./fs/rn.js";
 import { copyFile } from "./fs/cp.js";
 import { moveFile } from "./fs/mv.js";
 import { removeFile } from "./fs/rm.js";
+import { handlerOSInput } from "./os/os.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
   const [operationType, ...args] = userInput.trim().split(/\s+/g)
@@ -90,6 +91,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
         if (args.length !== 1) {
           printErrorText("Invalid input os command" + EOL)
         } else {
+          handlerOSInput(args);
         }
           break
 
