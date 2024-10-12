@@ -1,4 +1,4 @@
-import { sep, join, resolve } from "node:path";
+import { sep, join } from "node:path";
 import { cwd } from "node:process";
 import { printErrorText } from "../utils/colorText.js";
 import { writeFile } from "node:fs/promises";
