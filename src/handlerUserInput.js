@@ -11,6 +11,8 @@ import { moveFile } from "./fs/mv.js";
 import { removeFile } from "./fs/rm.js";
 import { handlerOSInput } from "./os/os.js";
 import { calculateHash } from "./hash/hash.js";
+import { compressFile } from "./zip/compress.js";
+import { decompressFile } from "./zip/decompress.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
   const [operationType, ...args] = userInput.trim().split(/\s+/g)
@@ -108,6 +110,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 2) {
         printErrorText("Invalid input compress command" + EOL)
       } else {
+        await compressFile(args);
       }
       break;
 
@@ -115,6 +118,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 2) {
         printErrorText("Invalid input decompress command" + EOL)
       } else {
+        await decompressFile(args);
       }
       break;
 
