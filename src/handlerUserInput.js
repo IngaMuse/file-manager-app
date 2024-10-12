@@ -6,6 +6,7 @@ import { getPrintListDir } from "./nav/ls.js";
 import { readFile } from "./fs/cat.js";
 import { createFile } from "./fs/add.js";
 import { renameFile } from "./fs/rn.js";
+import { copyFile } from "./fs/cp.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
   const [operationType, ...args] = userInput.trim().split(/\s+/g)
@@ -63,6 +64,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 2) {
         printErrorText("Invalid input copy command" + EOL)
       } else {
+        await copyFile(args);
       }
       break;
 
