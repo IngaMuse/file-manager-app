@@ -1,7 +1,7 @@
 import { cwd } from "node:process"
 import { sep, join, normalize } from "node:path";
 
-export const goUpDirectory = () => {
+export const getUpDirectory = () => {
   let currentPath = cwd();
   const arrayCurrentPath = currentPath.split(sep);
   if (arrayCurrentPath.length > 1) {

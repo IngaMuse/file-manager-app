@@ -1,8 +1,8 @@
 import { printErrorText } from "./utils/colorText.js";
 import { EOL } from "node:os";
-import { goUpDirectory } from "./nav/up.js";
+import { getUpDirectory } from "./nav/up.js";
 import { getChangeDirectory } from "./nav/cd.js";
-
+import { getPrintListDir } from "./nav/ls.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
   const [operationType, ...args] = userInput.trim().split(/\s+/g)
@@ -12,7 +12,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 0) {
         printErrorText("Invalid input up command" + EOL)
       } else {
-        goUpDirectory();
+        getUpDirectory();
       }
       break;
 
@@ -28,6 +28,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 0) {
         printErrorText("Invalid input print command" + EOL)
       } else {
+        await getPrintListDir();
       }
       break;
 
@@ -77,7 +78,6 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
         if (args.length !== 1) {
           printErrorText("Invalid input os command" + EOL)
         } else {
-          console.log("ok")
         }
           break
 

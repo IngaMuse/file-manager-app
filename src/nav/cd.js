@@ -8,6 +8,6 @@ export const getChangeDirectory = (args) => {
     const changeDirectoryPath = normalize(changeDirectory);
     process.chdir(changeDirectoryPath);
   } catch {
-    printErrorText("Please check your path")
+    printErrorText("Operation failed. Please check your path")
   }
 }
