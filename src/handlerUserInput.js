@@ -4,6 +4,7 @@ import { getUpDirectory } from "./nav/up.js";
 import { getChangeDirectory } from "./nav/cd.js";
 import { getPrintListDir } from "./nav/ls.js";
 import { readFile } from "./fs/cat.js";
+import { createFile } from "./fs/add.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
   const [operationType, ...args] = userInput.trim().split(/\s+/g)
@@ -45,6 +46,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 1) {
         printErrorText("Invalid input create command" + EOL)
       } else {
+        createFile(args);
       }
       break;
 
