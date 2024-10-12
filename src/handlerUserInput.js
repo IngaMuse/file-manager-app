@@ -5,6 +5,7 @@ import { getChangeDirectory } from "./nav/cd.js";
 import { getPrintListDir } from "./nav/ls.js";
 import { readFile } from "./fs/cat.js";
 import { createFile } from "./fs/add.js";
+import { renameFile } from "./fs/rn.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
   const [operationType, ...args] = userInput.trim().split(/\s+/g)
@@ -46,7 +47,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 1) {
         printErrorText("Invalid input create command" + EOL)
       } else {
-        createFile(args);
+        await createFile(args);
       }
       break;
 
@@ -54,6 +55,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 2) {
         printErrorText("Invalid input rename command" + EOL)
       } else {
+        await renameFile(args);
       }
       break;
 
