@@ -10,6 +10,7 @@ import { copyFile } from "./fs/cp.js";
 import { moveFile } from "./fs/mv.js";
 import { removeFile } from "./fs/rm.js";
 import { handlerOSInput } from "./os/os.js";
+import { calculateHash } from "./hash/hash.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
   const [operationType, ...args] = userInput.trim().split(/\s+/g)
@@ -99,6 +100,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 1) {
         printErrorText("Invalid input hash command" + EOL)
       } else {
+        await calculateHash(args);
       }
       break;
 
