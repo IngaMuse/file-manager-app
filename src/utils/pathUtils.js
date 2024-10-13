@@ -1,16 +1,18 @@
-import { cwd } from 'node:process'
-import { colorText } from './colorText.js'
+import { cwd } from "node:process";
+import { colorText } from "./colorText.js";
 import { EOL, homedir } from "node:os";
 
 export const printCurrentWorkingDirectory = () => {
-  console.log(colorText(`You are currently in ${cwd() + EOL}`, 'green'))
-}
+  console.log(colorText(`You are currently in ${cwd() + EOL}`, "green"));
+};
 
 export const changeHomeDirectory = () => {
   const homeDirectory = homedir();
   process.chdir(homeDirectory);
-}
+};
 
 export const printGreeting = (userName) => {
-  console.log(colorText(`Welcome to the File Manager, ${userName + "!" + EOL}`, "green"))
-}
+  console.log(
+    colorText(`Welcome to the File Manager, ${userName + "!" + EOL}`, "green")
+  );
+};

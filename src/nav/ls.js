@@ -3,7 +3,7 @@ import { readdir } from "node:fs/promises";
 
 export const getPrintListDir = async () => {
   let currentPath = cwd();
-  const files = await readdir(currentPath, {withFileTypes: true});
+  const files = await readdir(currentPath, { withFileTypes: true });
   const result = files
     .sort((a, b) => {
       if (a.isFile() === b.isFile()) return a.name.localeCompare(b.name);

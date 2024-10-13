@@ -1,4 +1,4 @@
-import { cwd } from "node:process"
+import { cwd } from "node:process";
 import { sep, join, normalize } from "node:path";
 
 export const getUpDirectory = () => {
@@ -12,4 +12,4 @@ export const getUpDirectory = () => {
     currentPath = normalize(currentPath.replace(".", "\\"));
     process.chdir(currentPath);
   }
-}
+};

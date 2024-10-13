@@ -1,7 +1,7 @@
 import { argv } from "node:process";
 import { InvalidUserNameError } from "./customError.js";
 
-export default  () => {
+export default () => {
   const userNameArg = argv
     .slice(2)
     .filter((arg) => arg.startsWith("--username="));

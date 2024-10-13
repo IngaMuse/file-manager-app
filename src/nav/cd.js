@@ -1,5 +1,5 @@
 import { join, normalize } from "node:path";
-import { cwd } from "node:process"
+import { cwd } from "node:process";
 import { printErrorText } from "../utils/colorText.js";
 
 export const getChangeDirectory = (args) => {
@@ -8,6 +8,6 @@ export const getChangeDirectory = (args) => {
     const changeDirectoryPath = normalize(changeDirectory);
     process.chdir(changeDirectoryPath);
   } catch {
-    printErrorText("Operation failed. Please check your path")
+    printErrorText("Operation failed. Please check your path");
   }
-}
+};

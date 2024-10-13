@@ -15,12 +15,11 @@ import { compressFile } from "./zip/compress.js";
 import { decompressFile } from "./zip/decompress.js";
 
 export const handlerUserInput = async (userInput, closeReadLine) => {
-  const [operationType, ...args] = userInput.trim().split(/\s+/g)
+  const [operationType, ...args] = userInput.trim().split(/\s+/g);
   switch (operationType) {
-      
     case "up":
       if (args.length !== 0) {
-        printErrorText("Invalid input up command" + EOL)
+        printErrorText("Invalid input up command" + EOL);
       } else {
         getUpDirectory();
       }
@@ -28,7 +27,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "cd":
       if (args.length !== 1) {
-        printErrorText("Invalid input change dir command" + EOL)
+        printErrorText("Invalid input change dir command" + EOL);
       } else {
         getChangeDirectory(args);
       }
@@ -36,7 +35,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "ls":
       if (args.length !== 0) {
-        printErrorText("Invalid input print command" + EOL)
+        printErrorText("Invalid input print command" + EOL);
       } else {
         await getPrintListDir();
       }
@@ -44,7 +43,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "cat":
       if (args.length !== 1) {
-        printErrorText("Invalid input read command" + EOL)
+        printErrorText("Invalid input read command" + EOL);
       } else {
         readFile(args);
       }
@@ -52,7 +51,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "add":
       if (args.length !== 1) {
-        printErrorText("Invalid input create command" + EOL)
+        printErrorText("Invalid input create command" + EOL);
       } else {
         await createFile(args);
       }
@@ -60,7 +59,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "rn":
       if (args.length !== 2) {
-        printErrorText("Invalid input rename command" + EOL)
+        printErrorText("Invalid input rename command" + EOL);
       } else {
         await renameFile(args);
       }
@@ -68,7 +67,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "cp":
       if (args.length !== 2) {
-        printErrorText("Invalid input copy command" + EOL)
+        printErrorText("Invalid input copy command" + EOL);
       } else {
         await copyFile(args);
       }
@@ -76,7 +75,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "mv":
       if (args.length !== 2) {
-        printErrorText("Invalid input move command" + EOL)
+        printErrorText("Invalid input move command" + EOL);
       } else {
         await moveFile(args);
       }
@@ -84,23 +83,23 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "rm":
       if (args.length !== 1) {
-        printErrorText("Invalid input remove command" + EOL)
+        printErrorText("Invalid input remove command" + EOL);
       } else {
         await removeFile(args);
       }
       break;
 
-      case "os":
-        if (args.length !== 1) {
-          printErrorText("Invalid input os command" + EOL)
-        } else {
-          handlerOSInput(args);
-        }
-          break
+    case "os":
+      if (args.length !== 1) {
+        printErrorText("Invalid input os command" + EOL);
+      } else {
+        handlerOSInput(args);
+      }
+      break;
 
     case "hash":
       if (args.length !== 1) {
-        printErrorText("Invalid input hash command" + EOL)
+        printErrorText("Invalid input hash command" + EOL);
       } else {
         await calculateHash(args);
       }
@@ -108,7 +107,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "compress":
       if (args.length !== 2) {
-        printErrorText("Invalid input compress command" + EOL)
+        printErrorText("Invalid input compress command" + EOL);
       } else {
         await compressFile(args);
       }
@@ -116,17 +115,17 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
 
     case "decompress":
       if (args.length !== 2) {
-        printErrorText("Invalid input decompress command" + EOL)
+        printErrorText("Invalid input decompress command" + EOL);
       } else {
         await decompressFile(args);
       }
       break;
 
-      case ".exit":
-        closeReadLine()
-        break
-      default:
-        printErrorText("Invalid input" + EOL)
-        break
-    }
-}
+    case ".exit":
+      closeReadLine();
+      break;
+    default:
+      printErrorText("Invalid input" + EOL);
+      break;
+  }
+};
