@@ -45,7 +45,7 @@ export const handlerUserInput = async (userInput, closeReadLine) => {
       if (args.length !== 1) {
         printErrorText("Invalid input read command" + EOL);
       } else {
-        readFile(args);
+        await readFile(args);
       }
       break;
 

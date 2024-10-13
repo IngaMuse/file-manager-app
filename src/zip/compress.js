@@ -1,7 +1,7 @@
 import { sep, join } from "node:path";
 import { cwd } from "node:process";
 import { printErrorText } from "../utils/colorText.js";
-import { writeFile } from "node:fs/promises";
+import { writeFile, access } from "node:fs/promises";
 import { createReadStream, createWriteStream } from "node:fs";
 import { createBrotliCompress } from "zlib";
 import { pipeline } from "stream/promises";
@@ -12,6 +12,9 @@ export const compressFile = async (args) => {
     const nameCompressFile = join(...srcPath.split(sep).slice(-1));
     const destPath = join(cwd(), args[1], nameCompressFile + ".gz");
 
+    await access(srcPath).catch(() => {
+      throw new Error();
+    });
     await writeFile(destPath, "");
 
     const readableStream = createReadStream(srcPath);
